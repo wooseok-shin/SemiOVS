@@ -77,7 +77,7 @@ We use the checkpoint provided by [SemiVL](https://github.com/google-research/se
 
 ### Setup Datasets
 
-Please follow [dataset preparation]()
+Please follow [dataset preparation](https://github.com/wooseok-shin/SemiOVS/tree/main/data)
 
 
 ## Usage
@@ -119,10 +119,6 @@ python experiments.py --exp <EXP_ID> --run <RUN_ID>
 ```
 
 
-## Citation
-If you find this project useful, please consider citing:
-```bibtex
-```
 
 ## Acknowledgements
 SemiOVS is based on [UniMatch](https://github.com/LiheYoung/UniMatch), [PrevMatch](https://github.com/wooseok-shin/PrevMatch), [SemiVL](https://github.com/google-research/semivl), and [SED](https://github.com/xb534/SED).
