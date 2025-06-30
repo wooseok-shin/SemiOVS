@@ -1,0 +1,62 @@
+dataset: pascal
+data_root: ../data/pascal/
+data_root_ood: ../data/coco/
+nclass: 21
+split: '92'
+img_scale: [2048, 512]
+scale_ratio_range: !!python/tuple [0.5, 2.0]
+crop_size: 512
+labeled_photometric_distortion: false
+model_args: {maskclip_class_filter: null}
+model: mmseg.vlm-vlg-aspp-s2p4-sk04-ftap-mcvitb
+text_embedding_variant: single
+mcc_text: concept4_single
+pl_text: single
+method: semivl
+use_fp: true
+conf_mode: pixelwise
+conf_thresh: 0.95
+disable_dropout: true
+pleval: true
+fp_rate: 0.5
+maskclip_consistency_lambda: [0.1, 0]
+clip_encoder: mcvit16
+mcc_conf_thresh: 0.9
+mcc_loss_reduce: mean_all
+criterion:
+  name: CELoss
+  kwargs: {ignore_index: 255}
+criterion_u: CELoss
+optimizer:
+  type: AdamW
+  lr: 0.0001
+  weight_decay: 0.01
+  paramwise_cfg:
+    custom_keys:
+      backbone: {lr_mult: 0.01}
+      text_encoder: {lr_mult: 0.0}
+      conv_encoder: {lr_mult: 1.0}
+      norm: {decay_mult: 0.0}
+      ln: {decay_mult: 0.0}
+      head: {lr_mult: 10.0}
+warmup_iters: 0
+warmup_ratio: 1.0e-06
+gpu_model: a6000
+n_gpus: 2
+n_nodes: 1
+batch_size: 2
+epochs: 80
+iters: null
+eval_mode: zegclip_sliding_window
+stride: 426
+eval_every_n_epochs: 1
+nccl_p2p_disable: false
+exp: 40
+name: voc-92-2048j512-512_vlm-vlg-aspp-s2p4-sk04-ftap-mcvitb-mtc4s_svl-095-disdrop-plev-mcc01j0c09-ma-ce-uce_adamw-1e-04-b001_1x2x2_ezsw
+version: '0.10'
+git_rev: ''
+list_max_len: 8
+model_num: 3
+random_select: true
+prev_conf_thresh: 0.9
+base_only_epoch: 0
