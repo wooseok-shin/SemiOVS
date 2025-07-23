@@ -2,6 +2,7 @@
 
 This is the official PyTorch implementation for the paper "Leveraging Out-of-Distribution Unlabeled Images: Semi-Supervised Semantic Segmentation with an Open-Vocabulary Model".
 
+**[[Arxiv]](https://arxiv.org/abs/2507.03302)**
 
 <p align="center"> <img src="docs/framework.png" width="700" align="center"> </p>
 
